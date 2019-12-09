@@ -1,84 +1,46 @@
-
 const ARROW_LEFT_KEYCODE = 37;
 const ARROW_RIGHT_KEYCODE = 39;
+let screenNumber = 0;
 
-const screensList = [`greeting`, `rules`, `game-1`, `game-2`, `game-3`, `stats`];
-const screensLinks = [];
-let screenNumberPrev = 5;
-let screenNumberNext = 0;
+const screensList = [
+  document.querySelector(`#greeting`),
+  document.querySelector(`#rules`),
+  document.querySelector(`#game-1`),
+  document.querySelector(`#game-2`),
+  document.querySelector(`#game-3`),
+  document.querySelector(`#stats`)
+];
 
-const getScreensLinks = (screensList) => {
-    screensList.forEach(function (it) {
-      screensLinks.push(document.querySelector(`#${it}`));
-    });
-
-    return screensLinks;
-};
+const removeChild = function (element) {
+    while (element.firstChild) {
+      element.removeChild(element.firstChild);
+    }
+  };
 
 const showScreen = (screenNumber) => {
+    const main = document.querySelector(`#main`);
+    const template = screensList[screenNumber].content;
+    const element = template.cloneNode(true);
 
-  return getScreensLinks(screensList)[screenNumber];
+    removeChild(main);
+    main.appendChild(element);
 };
 
-const replaceScreen = (screenNumber) => {
+showScreen(0);
 
-  const contentWrapper = document.querySelector(`main`);
-  const template = contentWrapper.querySelector(`#main`);
-
-
-  const content = template.cloneNode();
-  const currentScreen = showScreen(screenNumber).content;
-
-  content.appendChild(currentScreen);
-  contentWrapper.replaceChild(content, template);
-
-  console.log(content);
-};
-
-replaceScreen(5);
-
-// const pressArrow = (evt) => {
-//   if (evt.keyCode === ARROW_RIGHT_KEYCODE) {
-//     arrowDownHandler(evt);
-//     screenNumber++;
-//   }
-//
-//   if (evt.keyCode === ARROW_LEFT_KEYCODE) {
-//     arrowDownHandler(evt);
-//     screenNumber--;
-//   }
-//   console.log(screenNumber);
-//   replaceScreen(screenNumber);
-// };
-
-// const arrowRightDownHandler = function (evt) {
-//     if (evt.keyCode === ARROW_RIGHT_KEYCODE && screenNumber < 5) {
-//       screenNumber++;
-//       console.log(screenNumber);
-//       replaceScreen(screenNumber);
-//     }
-// };
-
-const arrowLeftDownHandler = function (evt) {
-    if (evt.keyCode === ARROW_LEFT_KEYCODE && screenNumberPrev > 0) {
-      screenNumberPrev--;
-      console.log(screenNumberPrev);
-      replaceScreen(screenNumberPrev);
+const arrowRightPressHandler = function (evt) {
+    if (evt.keyCode === ARROW_RIGHT_KEYCODE && screenNumber < 5) {
+      screenNumber++;
+      showScreen(screenNumber);
     }
 };
 
-const arrowRightDownHandler = function (evt) {
-    if (evt.keyCode === ARROW_RIGHT_KEYCODE && screenNumberNext < 5) {
-      screenNumberNext++;
-      console.log(screenNumberNext);
-      replaceScreen(screenNumberNext);
+const arrowLeftPressHandler = function (evt) {
+    if (evt.keyCode === ARROW_LEFT_KEYCODE && screenNumber > 0) {
+      screenNumber--;
+      showScreen(screenNumber);
     }
 };
 
-document.addEventListener('keydown', arrowRightDownHandler);
-document.addEventListener('keydown', arrowLeftDownHandler);
-
-
-// console.log(getScreensLinks(screensList));
-// console.log(showScreen(1));
-// replaceScreen(0);
+document.addEventListener('keydown', arrowRightPressHandler);
+document.addEventListener('keydown', arrowLeftPressHandler);
