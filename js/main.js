@@ -1,6 +1,45 @@
 const ARROW_LEFT_KEYCODE = 37;
 const ARROW_RIGHT_KEYCODE = 39;
+const MIX_SCREEN_NUMBER = 0;
+const MAX_SCREEN_NUMBER = 5;
+
 let screenNumber = 0;
+
+const createArrows = () => {
+  const arrowsWrapper = document.createElement(`div`);
+  arrowsWrapper.classList.add('arrows__wrap');
+  arrowsWrapper.innerHTML = `<style>
+    .arrows__wrap {
+      position: absolute;
+      top: 95px;
+      left: 50%;
+      margin-left: -56px;
+    }
+    .arrows__btn {
+      background: none;
+      border: 2px solid black;
+      padding: 5px 20px;
+    }
+  </style>
+  <button class="arrows__btn"><-</button>
+  <button class="arrows__btn">-></button>`;
+
+    const bodyElement = document.querySelector('body');
+    bodyElement.appendChild(arrowsWrapper);
+};
+
+createArrows();
+
+const setArrows = () => {
+  const arrows = document.querySelectorAll('.arrows__btn');
+  arrows[0].classList.add('left');
+  arrows[1].classList.add('right');
+};
+
+setArrows();
+
+const arrowLeft = document.querySelector(`.arrows__btn.left`);
+const arrowRight = document.querySelector(`.arrows__btn.right`);
 
 const screensList = [
   document.querySelector(`#greeting`),
@@ -28,19 +67,37 @@ const showScreen = (screenNumber) => {
 
 showScreen(0);
 
+const rightClickHandler = () => {
+  if (screenNumber < MAX_SCREEN_NUMBER) {
+    screenNumber++;
+    showScreen(screenNumber);
+  }
+};
+
+const leftClickHandler = () => {
+  if (screenNumber > MIX_SCREEN_NUMBER) {
+    screenNumber--;
+    showScreen(screenNumber);
+  }
+};
+
 const arrowRightPressHandler = function (evt) {
-    if (evt.keyCode === ARROW_RIGHT_KEYCODE && screenNumber < 5) {
-      screenNumber++;
-      showScreen(screenNumber);
+    if (evt.keyCode === ARROW_RIGHT_KEYCODE) {
+      rightClickHandler();
     }
 };
 
 const arrowLeftPressHandler = function (evt) {
-    if (evt.keyCode === ARROW_LEFT_KEYCODE && screenNumber > 0) {
-      screenNumber--;
-      showScreen(screenNumber);
+    if (evt.keyCode === ARROW_LEFT_KEYCODE) {
+      leftClickHandler();
     }
 };
 
-document.addEventListener('keydown', arrowRightPressHandler);
-document.addEventListener('keydown', arrowLeftPressHandler);
+const addArrowsHandle = () => {
+  arrowLeft.addEventListener('click', leftClickHandler);
+  arrowRight.addEventListener('click', rightClickHandler);
+  document.addEventListener('keydown', arrowLeftPressHandler);
+  document.addEventListener('keydown', arrowRightPressHandler);
+};
+
+addArrowsHandle();
