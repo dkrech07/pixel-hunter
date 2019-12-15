@@ -7,7 +7,7 @@ let screenNumber = 0;
 
 const createArrows = () => {
   const arrowsWrapper = document.createElement(`div`);
-  arrowsWrapper.classList.add('arrows__wrap');
+  arrowsWrapper.classList.add(`arrows__wrap`);
   arrowsWrapper.innerHTML = `<style>
     .arrows__wrap {
       position: absolute;
@@ -24,16 +24,16 @@ const createArrows = () => {
   <button class="arrows__btn"><-</button>
   <button class="arrows__btn">-></button>`;
 
-    const bodyElement = document.querySelector('body');
-    bodyElement.appendChild(arrowsWrapper);
+  const bodyElement = document.querySelector(`body`);
+  bodyElement.appendChild(arrowsWrapper);
 };
 
 createArrows();
 
 const setArrows = () => {
-  const arrows = document.querySelectorAll('.arrows__btn');
-  arrows[0].classList.add('left');
-  arrows[1].classList.add('right');
+  const arrows = document.querySelectorAll(`.arrows__btn`);
+  arrows[0].classList.add(`left`);
+  arrows[1].classList.add(`right`);
 };
 
 setArrows();
@@ -51,18 +51,18 @@ const screensList = [
 ];
 
 const removeChild = function (element) {
-    while (element.firstChild) {
-      element.removeChild(element.firstChild);
-    }
-  };
+  while (element.firstChild) {
+    element.removeChild(element.firstChild);
+  }
+};
 
-const showScreen = (screenNumber) => {
-    const main = document.querySelector(`#main`);
-    const template = screensList[screenNumber].content;
-    const element = template.cloneNode(true);
+const showScreen = (number) => {
+  const main = document.querySelector(`#main`);
+  const template = screensList[number].content;
+  const element = template.cloneNode(true);
 
-    removeChild(main);
-    main.appendChild(element);
+  removeChild(main);
+  main.appendChild(element);
 };
 
 showScreen(0);
@@ -82,22 +82,22 @@ const leftClickHandler = () => {
 };
 
 const arrowRightPressHandler = function (evt) {
-    if (evt.keyCode === ARROW_RIGHT_KEYCODE) {
-      rightClickHandler();
-    }
+  if (evt.keyCode === ARROW_RIGHT_KEYCODE) {
+    rightClickHandler();
+  }
 };
 
 const arrowLeftPressHandler = function (evt) {
-    if (evt.keyCode === ARROW_LEFT_KEYCODE) {
-      leftClickHandler();
-    }
+  if (evt.keyCode === ARROW_LEFT_KEYCODE) {
+    leftClickHandler();
+  }
 };
 
 const addArrowsHandle = () => {
-  arrowLeft.addEventListener('click', leftClickHandler);
-  arrowRight.addEventListener('click', rightClickHandler);
-  document.addEventListener('keydown', arrowLeftPressHandler);
-  document.addEventListener('keydown', arrowRightPressHandler);
+  arrowLeft.addEventListener(`click`, leftClickHandler);
+  arrowRight.addEventListener(`click`, rightClickHandler);
+  document.addEventListener(`keydown`, arrowLeftPressHandler);
+  document.addEventListener(`keydown`, arrowRightPressHandler);
 };
 
 addArrowsHandle();
