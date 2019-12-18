@@ -23,4 +23,4 @@ const greeting =
     </div>
   </footer>`;
 
-export default greeting;
+export {greeting};

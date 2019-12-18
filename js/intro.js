@@ -16,4 +16,4 @@ const intro =
     </div>
   </footer>`;
 
-export default intro;
+export {intro};
