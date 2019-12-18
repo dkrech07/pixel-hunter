@@ -1,3 +1,13 @@
+import {intro} from './intro.js';
+import {greeting} from './greeting.js';
+import {rules} from './rules.js';
+// import {gameOne} from './game-one.js';
+import {gameTwo} from './game-two.js';
+import {gameThree} from './game-three.js';
+import {stats} from './stats.js'
+
+console.log(stats);
+
 // const ARROW_LEFT_KEYCODE = 37;
 // const ARROW_RIGHT_KEYCODE = 39;
 // const MIX_SCREEN_NUMBER = 0;
