@@ -17,3 +17,6 @@ const intro =
   </footer>`;
 
 export {intro};
+import {getElementFromTemplate} from './block-creator.js';
+
+getElementFromTemplate(intro);
