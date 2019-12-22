@@ -1,3 +1,5 @@
+import {getElementFromTemplate} from './create-block.js';
+
 const intro =
 `<div id="main" class="central__content">
     <div id="intro" class="intro">
@@ -16,7 +18,6 @@ const intro =
     </div>
   </footer>`;
 
-export {intro};
-// import {getElementFromTemplate} from './create-block.js';
-//
-// getElementFromTemplate(intro);
+const introElement = getElementFromTemplate(intro);
+
+export {introElement};

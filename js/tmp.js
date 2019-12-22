@@ -7,6 +7,12 @@
 //
 // console.log(stats);
 
+// const removeChild = (element) => {
+//   while (element.firstChild) {
+//     element.removeChild(element.firstChild);
+//   }
+// };
+
 // const ARROW_LEFT_KEYCODE = 37;
 // const ARROW_RIGHT_KEYCODE = 39;
 // const MIX_SCREEN_NUMBER = 0;

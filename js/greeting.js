@@ -1,3 +1,5 @@
+import {getElementFromTemplate} from './create-block.js';
+
 const greeting =
 `<div class="greeting central--blur">
     <div class="greeting__logo"><img src="img/logo_big.png" width="201" height="89" alt="Pixel Hunter"></div>
@@ -23,4 +25,6 @@ const greeting =
     </div>
   </footer>`;
 
-export {greeting};
+const greetingElement = getElementFromTemplate(greeting);
+
+export {greetingElement};
