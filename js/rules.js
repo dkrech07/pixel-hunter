@@ -36,8 +36,25 @@ const rules = `<header class="header">
     </div>
   </footer>`;
 
+const checkFormRules = () => {
+  const rulesForm = document.querySelector(`.rules__form`);
+  const rulesInput = rulesForm.querySelector(`.rules__input`);
+  const rulesButton = document.querySelector(`.rules__button`);
+
+  const rulesInputChange = (evt) => {
+    if (evt.target.value) {
+      rulesButton.disabled = false;
+    } else {
+      rulesButton.disabled = true;
+    }
+  };
+  rulesInput.addEventListener(`change`, rulesInputChange);
+};
+
 const showRules = () => {
   showScreen(getElementFromTemplate(rules));
+  checkFormRules();
+
 };
 
 export {showRules};
