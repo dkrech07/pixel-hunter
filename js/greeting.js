@@ -1,4 +1,5 @@
 import {getElementFromTemplate} from './create-block.js';
+import {showScreen} from './insert-block.js';
 
 const greeting =
 `<div class="greeting central--blur">
@@ -27,4 +28,17 @@ const greeting =
 
 const greetingElement = getElementFromTemplate(greeting);
 
+const showGreeting = () => {
+  const nextButton = document.querySelector(`.greeting__continue`);
+
+  const nextClickHandler = () => {
+    console.log(nextButton);
+    nextButton.removeEventListener(`click`, nextClickHandler);
+  };
+
+  nextButton.addEventListener(`click`, nextClickHandler);
+
+};
+
 export {greetingElement};
+export {showGreeting};
