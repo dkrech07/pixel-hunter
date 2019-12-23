@@ -1,3 +1,6 @@
+import {getElementFromTemplate} from './create-block.js';
+import {showScreen} from './insert-block.js';
+
 const rules = `<header class="header">
     <div class="header__back">
       <span class="back">
@@ -33,4 +36,8 @@ const rules = `<header class="header">
     </div>
   </footer>`;
 
-export {rules};
+const showRules = () => {
+  showScreen(getElementFromTemplate(rules));
+};
+
+export {showRules};

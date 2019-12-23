@@ -1,5 +1,6 @@
 import {getElementFromTemplate} from './create-block.js';
 import {showScreen} from './insert-block.js';
+import {showGreeting} from './greeting.js';
 
 const intro =
 `<div id="main" class="central__content">
@@ -19,15 +20,18 @@ const intro =
     </div>
   </footer>`;
 
-const showIntro = () => {
-  showScreen(getElementFromTemplate(intro));
-
+const addAsteriskClickHandle = () => {
   const asteriskButton = document.querySelector(`.intro__asterisk`);
   const asteriskClickHandler = () => {
-    console.log('клик по звездочке');
+    showGreeting();
     asteriskButton.removeEventListener(`click`, asteriskClickHandler);
   };
   asteriskButton.addEventListener(`click`, asteriskClickHandler);
+};
+
+const showIntro = () => {
+  showScreen(getElementFromTemplate(intro));
+  addAsteriskClickHandle();
 };
 
 export {showIntro};
