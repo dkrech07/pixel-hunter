@@ -1,3 +1,6 @@
+import {getElementFromTemplate} from './create-block.js';
+import {showScreen} from './insert-block.js';
+
 const gameOne = `<header class="header">
   <div class="header__back">
     <span class="back">
@@ -64,4 +67,29 @@ const gameOne = `<header class="header">
   </div>
 </footer>`;
 
-export {gameOne};
+const gameOneChange = () => {
+  const gameForm = document.querySelector(`.game__content`);
+  const gameQuestionOne = gameForm.querySelectorAll(`input[name="question1"]`);
+  const gameQuestionTwo = gameForm.querySelectorAll(`input[name="question2"]`);
+
+  console.log(gameQuestionOne);
+  console.log(gameQuestionTwo);
+
+  const gameQuestionChange = (evt) => {
+    console.log(evt.target.value);
+  };
+  // gameQuestionOne.forEach(function (it) {
+  //   it.addEventListener('change', gameQuestionChange);
+  // });
+
+  // gameQuestionOne.forEach(
+  //   it => 'change', gameQuestionChange;
+  // );
+};
+
+const showGameOne = () => {
+  showScreen(getElementFromTemplate(gameOne));
+  gameOneChange();
+};
+
+export {showGameOne};

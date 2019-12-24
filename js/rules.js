@@ -1,5 +1,6 @@
 import {getElementFromTemplate} from './create-block.js';
 import {showScreen} from './insert-block.js';
+import {showGameOne} from './game-one.js';
 
 const rules = `<header class="header">
     <div class="header__back">
@@ -36,6 +37,11 @@ const rules = `<header class="header">
     </div>
   </footer>`;
 
+// const checkFormValidation = (value) => {
+//   let checkFormArray = value.split(``);
+//   return checkFormArray;
+// };
+
 const checkFormRules = () => {
   const rulesForm = document.querySelector(`.rules__form`);
   const rulesInput = rulesForm.querySelector(`.rules__input`);
@@ -48,7 +54,14 @@ const checkFormRules = () => {
       rulesButton.disabled = true;
     }
   };
+
+  const rulesFormSend = (evt) => {
+    evt.preventDefault();
+    showGameOne();
+  };
+
   rulesInput.addEventListener(`change`, rulesInputChange);
+  rulesForm.addEventListener(`submit`, rulesFormSend);
 };
 
 const showRules = () => {
