@@ -78,13 +78,15 @@ const gameOneChange = () => {
   const gameQuestionChange = (evt) => {
     console.log(evt.target.value);
   };
-  // gameQuestionOne.forEach(function (it) {
-  //   it.addEventListener('change', gameQuestionChange);
-  // });
 
-  // gameQuestionOne.forEach(
-  //   it => 'change', gameQuestionChange;
-  // );
+  const addGameClickHandle = (question) => {
+    question.forEach((it) => {
+      it.addEventListener(`change`, gameQuestionChange);
+    });
+  };
+
+  addGameClickHandle(gameQuestionOne);
+  addGameClickHandle(gameQuestionTwo);
 };
 
 const showGameOne = () => {
