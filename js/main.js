@@ -1,3 +1,6 @@
-import {showIntro} from './intro.js';
+// import {showIntro} from './intro.js';
+//
+// showIntro();
 
-showIntro();
+import {showGameOne} from './game-one.js';
+showGameOne();
