@@ -1,3 +1,7 @@
+import {getElementFromTemplate} from './create-block.js';
+import {showScreen} from './insert-block.js';
+import {returnIntro} from './intro.js';
+
 const stats = `<header class="header">
     <div class="header__back">
       <span class="back">
@@ -117,4 +121,9 @@ const stats = `<header class="header">
     </div>
   </footer>`;
 
-export {stats};
+const showStats = () => {
+  showScreen(getElementFromTemplate(stats));
+  returnIntro();
+};
+
+export {showStats};

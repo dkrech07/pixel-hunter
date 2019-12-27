@@ -1,5 +1,7 @@
 import {getElementFromTemplate} from './create-block.js';
 import {showScreen} from './insert-block.js';
+import {showGameTwo} from './game-two.js';
+import {returnIntro} from './intro.js';
 
 const gameOne = `<header class="header">
   <div class="header__back">
@@ -68,15 +70,12 @@ const gameOne = `<header class="header">
 </footer>`;
 
 const gameOneValue = {
-  optionOne: null,
-  optionTwo: null
-}
+  optionOne: false,
+  optionTwo: false
+};
 
 const gameOneChange = () => {
-  const gameForm = document.querySelector(`.game__content`);
   const gameOptions = document.querySelectorAll(`.game__option`);
-  const gameQuestionOne = gameForm.querySelectorAll(`input[name="question1"]`);
-  const gameQuestionTwo = gameForm.querySelectorAll(`input[name="question2"]`);
 
   const addGameOptionMarks = () => {
     gameOptions.forEach((it, index) => {
@@ -85,14 +84,19 @@ const gameOneChange = () => {
   };
 
   const gameQuestionChange = (evt) => {
-    if (evt.currentTarget.id == 0) {
-      gameOneValue.optionOne = evt.target.value
+    if (evt.currentTarget.id === `0`) {
+      gameOneValue.optionOne = evt.target.value;
       console.log(gameOneValue);
     }
 
-    if (evt.currentTarget.id == 1) {
-      gameOneValue.optionTwo = evt.target.value
+    if (evt.currentTarget.id === `1`) {
+      gameOneValue.optionTwo = evt.target.value;
       console.log(gameOneValue);
+    }
+
+    if (gameOneValue.optionOne !== false && gameOneValue.optionTwo !== false) {
+      console.log(`Открываю следующий игровой экран`);
+      showGameTwo();
     }
   };
 
@@ -110,6 +114,7 @@ const gameOneChange = () => {
 const showGameOne = () => {
   showScreen(getElementFromTemplate(gameOne));
   gameOneChange();
+  returnIntro();
 };
 
 export {showGameOne};

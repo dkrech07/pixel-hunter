@@ -1,3 +1,8 @@
+import {getElementFromTemplate} from './create-block.js';
+import {showScreen} from './insert-block.js';
+import {showStats} from './stats.js';
+import {returnIntro} from './intro.js';
+
 const gameThree = `<header class="header">
   <div class="header__back">
     <span class="back">
@@ -51,4 +56,27 @@ const gameThree = `<header class="header">
   </div>
 </footer>`;
 
-export {gameThree};
+const gameQuestionChange = (evt) => {
+  console.log(evt.target);
+  showStats();
+};
+
+const addGameClickHandle = (label) => {
+  label.forEach((it) => {
+    it.addEventListener(`click`, gameQuestionChange);
+  });
+};
+
+const gameThreeChange = () => {
+  const gameForm = document.querySelector(`.game__content`);
+  const gameOptions = gameForm.querySelectorAll(`.game__option`);
+  addGameClickHandle(gameOptions);
+};
+
+const showGameThree = () => {
+  showScreen(getElementFromTemplate(gameThree));
+  gameThreeChange();
+  returnIntro();
+};
+
+export {showGameThree};

@@ -1,6 +1,7 @@
 import {getElementFromTemplate} from './create-block.js';
 import {showScreen} from './insert-block.js';
 import {showGameOne} from './game-one.js';
+import {returnIntro} from './intro.js';
 
 const rules = `<header class="header">
     <div class="header__back">
@@ -67,7 +68,7 @@ const checkFormRules = () => {
 const showRules = () => {
   showScreen(getElementFromTemplate(rules));
   checkFormRules();
-
+  returnIntro();
 };
 
 export {showRules};

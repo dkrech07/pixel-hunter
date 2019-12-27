@@ -1,3 +1,8 @@
+import {getElementFromTemplate} from './create-block.js';
+import {showScreen} from './insert-block.js';
+import {showGameThree} from './game-three.js';
+import {returnIntro} from './intro.js';
+
 const gameTwo = `<header class="header">
   <div class="header__back">
     <span class="back">
@@ -53,4 +58,38 @@ const gameTwo = `<header class="header">
   </div>
 </footer>`;
 
-export {gameTwo};
+const gameTwoValue = {
+  optionOne: false,
+  optionTwo: false
+};
+
+const gameQuestionChange = (evt) => {
+  if (evt.target.value === `photo`) {
+    gameTwoValue.optionOne = evt.target.value;
+  }
+
+  if (evt.target.value === `paint`) {
+    gameTwoValue.optionTwo = evt.target.value;
+  }
+
+  showGameThree();
+};
+
+const addGameClickHandle = (label) => {
+  label.forEach((it) => {
+    it.addEventListener(`click`, gameQuestionChange);
+  });
+};
+
+const gameTwoChange = () => {
+  const answerPhoto = document.querySelectorAll(`input`);
+  addGameClickHandle(answerPhoto);
+};
+
+const showGameTwo = () => {
+  showScreen(getElementFromTemplate(gameTwo));
+  gameTwoChange();
+  returnIntro();
+};
+
+export {showGameTwo};
