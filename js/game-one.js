@@ -67,30 +67,33 @@ const gameOne = `<header class="header">
   </div>
 </footer>`;
 
+const gameOneValue = {
+  optionOne: null,
+  optionTwo: null
+}
+
 const gameOneChange = () => {
   const gameForm = document.querySelector(`.game__content`);
   const gameOptions = document.querySelectorAll(`.game__option`);
   const gameQuestionOne = gameForm.querySelectorAll(`input[name="question1"]`);
   const gameQuestionTwo = gameForm.querySelectorAll(`input[name="question2"]`);
 
-  console.log(gameQuestionOne);
-  console.log(gameQuestionTwo);
-
-  const gameQuestionChange = (evt) => {
-    // console.log(evt);
-    // console.log(evt.currentTarget.id);
-
-    if (evt.currentTarget.id == 1) {
-      console.log(evt.target);
-
-    }
-
-  };
-
   const addGameOptionMarks = () => {
     gameOptions.forEach((it, index) => {
       it.id = index;
     });
+  };
+
+  const gameQuestionChange = (evt) => {
+    if (evt.currentTarget.id == 0) {
+      gameOneValue.optionOne = evt.target.value
+      console.log(gameOneValue);
+    }
+
+    if (evt.currentTarget.id == 1) {
+      gameOneValue.optionTwo = evt.target.value
+      console.log(gameOneValue);
+    }
   };
 
   const addGameClickHandle = (option) => {
@@ -100,17 +103,8 @@ const gameOneChange = () => {
   };
 
   addGameOptionMarks();
-
   addGameClickHandle(gameOptions);
 
-  // const addGameClickHandle = (question) => {
-  //   question.forEach((it) => {
-  //     it.addEventListener(`change`, gameQuestionChange);
-  //   });
-  // };
-
-  // addGameClickHandle(gameQuestionOne);
-  // addGameClickHandle(gameQuestionTwo);
 };
 
 const showGameOne = () => {
