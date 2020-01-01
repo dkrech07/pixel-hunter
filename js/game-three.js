@@ -56,8 +56,7 @@ const gameThree = `<header class="header">
   </div>
 </footer>`;
 
-const gameQuestionChange = (evt) => {
-  console.log(evt.target);
+const gameQuestionChange = () => {
   showStats();
 };
 

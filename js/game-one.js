@@ -86,16 +86,11 @@ const gameOneChange = () => {
   const gameQuestionChange = (evt) => {
     if (evt.currentTarget.id === `0`) {
       gameOneValue.optionOne = evt.target.value;
-      console.log(gameOneValue);
     }
-
     if (evt.currentTarget.id === `1`) {
       gameOneValue.optionTwo = evt.target.value;
-      console.log(gameOneValue);
     }
-
     if (gameOneValue.optionOne !== false && gameOneValue.optionTwo !== false) {
-      console.log(`Открываю следующий игровой экран`);
       showGameTwo();
     }
   };
@@ -105,10 +100,8 @@ const gameOneChange = () => {
       it.addEventListener(`click`, gameQuestionChange);
     });
   };
-
   addGameOptionMarks();
   addGameClickHandle(gameOptions);
-
 };
 
 const showGameOne = () => {

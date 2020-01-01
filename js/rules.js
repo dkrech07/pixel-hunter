@@ -42,6 +42,7 @@ const rules = `<header class="header">
 //   let checkFormArray = value.split(``);
 //   return checkFormArray;
 // };
+// Задать валидацию;
 
 const checkFormRules = () => {
   const rulesForm = document.querySelector(`.rules__form`);

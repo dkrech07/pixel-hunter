@@ -67,11 +67,9 @@ const gameQuestionChange = (evt) => {
   if (evt.target.value === `photo`) {
     gameTwoValue.optionOne = evt.target.value;
   }
-
   if (evt.target.value === `paint`) {
     gameTwoValue.optionTwo = evt.target.value;
   }
-
   showGameThree();
 };
 
@@ -82,7 +80,7 @@ const addGameClickHandle = (label) => {
 };
 
 const gameTwoChange = () => {
-  const answerPhoto = document.querySelectorAll(`input`);
+  const answerPhoto = document.querySelectorAll(`.game__answer`);
   addGameClickHandle(answerPhoto);
 };
 

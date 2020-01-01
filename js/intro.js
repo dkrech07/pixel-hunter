@@ -36,11 +36,9 @@ const showIntro = () => {
 
 const returnIntro = () => {
   const backButton = document.querySelector(`.header__back`);
-
   const backButtonClickHandler = () => {
     showIntro();
   };
-
   backButton.addEventListener(`click`, backButtonClickHandler);
 };
 
