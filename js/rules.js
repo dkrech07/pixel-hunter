@@ -44,17 +44,34 @@ const rules = `<header class="header">
 // };
 // Задать валидацию;
 
+// setTimeout('alert("прошла секунда")', 1000);
+
 const checkFormRules = () => {
   const rulesForm = document.querySelector(`.rules__form`);
   const rulesInput = rulesForm.querySelector(`.rules__input`);
   const rulesButton = document.querySelector(`.rules__button`);
 
   const rulesInputChange = (evt) => {
-    if (evt.target.value) {
-      rulesButton.disabled = false;
-    } else {
-      rulesButton.disabled = true;
-    }
+
+    // let checkInputSpaceOnly = () => {
+    //   let inputText = evt.target.value;
+    //   let inputArray = inputText.split('');
+    //   inputArray.forEach((it) => {
+    //     console.log(it);
+    //   });
+    //
+    //   console.log(inputArray);
+    // };
+
+    let checkInputData = () => {
+      checkInputSpaceOnly();
+      if (evt.target.value) {
+        rulesButton.disabled = false;
+      } else {
+        rulesButton.disabled = true;
+      }
+    };
+      setInterval(checkInputData, 300);
   };
 
   const rulesFormSend = (evt) => {
@@ -62,7 +79,7 @@ const checkFormRules = () => {
     showGameOne();
   };
 
-  rulesInput.addEventListener(`change`, rulesInputChange);
+  rulesInput.addEventListener(`focus`, rulesInputChange);
   rulesForm.addEventListener(`submit`, rulesFormSend);
 };
 
