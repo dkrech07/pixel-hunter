@@ -53,16 +53,6 @@ const checkFormRules = () => {
 
   const rulesInputChange = (evt) => {
 
-    // let checkInputSpaceOnly = () => {
-    //   let inputText = evt.target.value;
-    //   let inputArray = inputText.split('');
-    //   inputArray.forEach((it) => {
-    //     console.log(it);
-    //   });
-    //
-    //   console.log(inputArray);
-    // };
-
     let checkInputData = () => {
       checkInputSpaceOnly();
       if (evt.target.value) {
