@@ -28,5 +28,8 @@
   },
   "engines": {
     "node": "6.10"
+  },
+  "dependencies": {
+    "rollup": "^2.1.0"
   }
 }
