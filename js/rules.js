@@ -54,14 +54,14 @@ const checkFormRules = () => {
   const rulesInputChange = (evt) => {
 
     let checkInputData = () => {
-      checkInputSpaceOnly();
+      // checkInputSpaceOnly();
       if (evt.target.value) {
         rulesButton.disabled = false;
       } else {
         rulesButton.disabled = true;
       }
     };
-      setInterval(checkInputData, 300);
+    setInterval(checkInputData, 300);
   };
 
   const rulesFormSend = (evt) => {

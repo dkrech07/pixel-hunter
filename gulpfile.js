@@ -11,7 +11,7 @@ const mqpacker = require('css-mqpacker');
 const minify = require('gulp-csso');
 const rename = require('gulp-rename');
 const imagemin = require('gulp-imagemin');
-const rollup = require(`gulp-better-rollup`);
+// const rollup = require(`gulp-better-rollup`);
 const sourcemaps = require(`gulp-sourcemaps`);
 
 gulp.task('style', function () {
@@ -37,20 +37,20 @@ gulp.task('style', function () {
     .pipe(gulp.dest('build/css'));
 });
 
-// gulp.task('scripts', function () {
-//   return gulp.src('js/**/*.js')
-//     .pipe(plumber())
-//     .pipe(gulp.dest('build/js/'));
-// });
-
-gulp.task(`scripts`, () => {
-  return gulp.src(`js/main.js`)
+gulp.task('scripts', function () {
+  return gulp.src('js/**/*.js')
     .pipe(plumber())
-    .pipe(sourcemaps.init())
-    .pipe(rollup({}, `iife`))
-    .pipe(sourcemaps.write(``))
-    .pipe(gulp.dest(`build/js`));
+    .pipe(gulp.dest('build/js/'));
 });
+
+// gulp.task(`scripts`, () => {
+//   return gulp.src(`js/main.js`)
+//     .pipe(plumber())
+//     .pipe(sourcemaps.init())
+//     .pipe(rollup({}, `iife`))
+//     .pipe(sourcemaps.write(``))
+//     .pipe(gulp.dest(`build/js`));
+// });
 
 gulp.task('test', function () {
 });
